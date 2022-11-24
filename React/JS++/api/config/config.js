@@ -1,4 +1,5 @@
-const { REDIS_CONF } = require('./db_config.js')
+const { REDIS_CONF } = require('./db_config.js'),
+  { isPrd } = require('./env_config.js');
 
 module.exports = {
   qiniu: {
@@ -23,8 +24,8 @@ module.exports = {
   },
   sessionInfo: {
     keys: ['a1s2@d3#f4$_+g5%6^'], // 加密cookie
-    name: 'txclass.sid', // 一般就是 项目.sid
-    prefix: 'txclass.sess', // 项目.sess
+    name: 'txclass.sid', // set-Cookies一般就是会有前缀：项目.sid
+    prefix: 'txclass.sess', // 存到redis中，会有前缀：项目.sess
   },
   cookieInfo: {
     path: '/', // 作用的范围，一般作用在全局根目录
@@ -34,9 +35,10 @@ module.exports = {
   redisInfo: {
     all: `${REDIS_CONF[1]}:${REDIS_CONF[0]}`, // 所有的redis都使用一个连接 127.0.0.1:6379
   },
-  adminInfo: {
+  adminAccount: {
     username: 'admin',
     password: 'admin'
   },
   cryptoSecret: 'sSDKFJsinhfj%^^&&S^S&S&*(*SD*SDUJFJJD(SIKSOOS)dsss^*^',
+  corsOrigin: isPrd ? 'http://admin' : 'http://localhost:3001'
 }

@@ -16,6 +16,15 @@ class CourseService {
       return await CourseModel.create(data);
     }
   }
+
+  async getCourseData() {
+    // 把数据取出来
+    return await CourseModel.findAll({
+      // attributes: {
+      //   exclude: ['posterUrl', 'description']
+      // }
+    })
+  }
 }
 
 module.exports = new CourseService();

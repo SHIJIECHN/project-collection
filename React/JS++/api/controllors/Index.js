@@ -1,4 +1,8 @@
-const { redisGet, redisSet } = require('../libs/redisClient.js')
+const { redisGet, redisSet } = require('../libs/redisClient.js');
+const { returnInfo } = require('../libs/utils.js');
+const { API } = require('../config/error_config.js');
+const { getCourseData } = require('../services/Course.js');
+const { getCourseFieldData } = require('../services/CourseTab.js');
 
 class Index {
   async index(ctx, next) {
@@ -24,6 +28,18 @@ class Index {
     }
 
     // await ctx.render('index');
+  }
+  async getCourseData(ctx, next) {
+    const courseData = await getCourseData();
+    ctx.body = courseData;
+    // fieldData = await getCourseFieldData();
+
+    // ctx.body = courseData && fieldData
+    //   ? returnInfo(API.RETURN_SUCCESS, {
+    //     courseData,
+    //     fieldData
+    //   })
+    //   : returnInfo(API.RETURN_FAILED)
   }
 
 }

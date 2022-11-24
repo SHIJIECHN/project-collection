@@ -64,9 +64,25 @@ function makeCrypto(str) {
   return _md5.update(content).digest('hex');
 }
 
+// 去掉空格
+function trimSpace(str) {
+  return str.replace(/\s+/g, '');
+}
+
+// 请求返回的数据格式
+function returnInfo(errorInfo, data) {
+  if (data) {
+    errorInfo.data = data;
+  }
+
+  return errorInfo;
+}
+
 module.exports = {
   startProcess,
   qiniuUpload,
-  makeCrypto
+  makeCrypto,
+  trimSpace,
+  returnInfo
 }
 

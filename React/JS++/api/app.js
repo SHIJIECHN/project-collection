@@ -5,11 +5,11 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-
 const session = require('koa-generic-session');
 const koaRedis = require('koa-redis');
+const cors = require('koa2-cors');
 
-const { sessionInfo, cookieInfo, redisInfo } = require('./config/config.js')
+const { sessionInfo, cookieInfo, redisInfo, corsOrigin } = require('./config/config.js')
 
 const crawlerRouter = require('./routes/crawler');
 const indexRouter = require('./routes/index.js');
@@ -18,6 +18,13 @@ const adminRouter = require('./routes/admin.js')
 
 // error handler
 onerror(app);
+
+// 跨域设置
+app.use(cors({
+  origin: function (ctx) {
+    return corsOrigin; // 环境判断
+  }
+}))
 
 // global middlewares
 app.use(bodyparser({
