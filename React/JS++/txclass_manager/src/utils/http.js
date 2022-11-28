@@ -6,6 +6,7 @@ export default class HTTP {
     axios({
       url: options.url,
       method: 'post',
+      withCredentials: true, // 配置请求头携带Cookie
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
@@ -20,6 +21,7 @@ export default class HTTP {
     axios({
       url: options.url,
       method: 'get',
+      withCredentials: true
     }).then((res) => {
       options.success(res.data);
     }).catch(err => {

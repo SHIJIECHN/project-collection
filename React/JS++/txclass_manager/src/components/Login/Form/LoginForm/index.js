@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { loginAction } from 'services/Login'
-import { trimSpace } from 'utils/tools'
+import { loginAction } from 'services/Login.js'
+import { trimSpace } from 'utils/tools.js'
 import LoginService from "services/Login.js";
 
 import './index.scss'
@@ -13,6 +13,16 @@ export default class LoginForm extends Component {
     this.state = {
       username: '',
       password: ''
+    }
+  }
+
+  async loginCheck() {
+    const result = await loginService.loginCheck();
+
+    const errorCode = result.error_code;
+    if (errorCode === 10007) {
+      const { history } = this.props;
+      history.push('/');
     }
   }
 
@@ -55,6 +65,10 @@ export default class LoginForm extends Component {
     // 登录成功。跳转页面
     console.log('登录成功');
     history.push('/');
+  }
+
+  componentDidMount() {
+    this.loginCheck();
   }
 
   render() {

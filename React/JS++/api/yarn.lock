@@ -1875,7 +1875,7 @@ koa-redis@^4.0.1:
     debug "^4.1.1"
     ioredis "^4.14.1"
 
-koa-router@7.4.1:
+koa-router@7.4.0:
   version "7.4.0"
   resolved "https://registry.npmmirror.com/koa-router/-/koa-router-7.4.0.tgz#aee1f7adc02d5cb31d7d67465c9eacc825e8c5e0"
   integrity sha512-IWhaDXeAnfDBEpWS6hkGdZ1ablgr6Q6pGdXCyK38RbzuH4LkUOpPqPw+3f8l8aTDrQmBQ7xJc0bs2yV4dzcO+g==

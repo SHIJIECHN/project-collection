@@ -23,7 +23,9 @@ onerror(app);
 app.use(cors({
   origin: function (ctx) {
     return corsOrigin; // 环境判断
-  }
+  },
+  // 配置浏览器在不同源的情况下，允许设置Cookie
+  credentials: true
 }))
 
 // global middlewares

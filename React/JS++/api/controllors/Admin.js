@@ -17,6 +17,17 @@ class Admin {
     }
   }
 
+  // 验证是否已经登录中间件
+  async loginCheck(ctx, next) {
+    if (ctx.session && ctx.session.userInfo) {
+      // 登录状态
+      ctx.body = returnInfo(LOGIN.LOGIN_STATUS);
+      return;
+    }
+    // 非登录状态
+    ctx.body = returnInfo(LOGIN.NOT_LOGIN_STATUS);
+  }
+
   // 登录
   async loginAction(ctx, next) {
     // 解构传过来的数据
@@ -55,7 +66,7 @@ class Admin {
       ctx.body = returnInfo(LOGIN.PASSWORD_ERROR);
       return;
     }
-    // 存入session
+    // 将登录信息存入session中
     if (!ctx.session.userInfo) {
       ctx.session.userInfo = result
     }
