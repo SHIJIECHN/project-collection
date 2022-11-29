@@ -72,7 +72,13 @@ class Admin {
     }
 
     // 登录成功
-    return ctx.body = returnInfo(LOGIN.SUCCESS, ctx.session.userInfo);
+    ctx.body = returnInfo(LOGIN.SUCCESS, ctx.session.userInfo);
+  }
+
+  /** 退出登录 */
+  async logoutAction(ctx, next) {
+    delete ctx.session.userInfo;
+    ctx.body = returnInfo(LOGIN.LOGOUT_SUCCESS);
   }
 }
 

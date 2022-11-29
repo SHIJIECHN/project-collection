@@ -14,7 +14,7 @@ function App() {
         <Route component={LoginPage} path='/login' />
         {/* <Route component={IndexPage} path='/' /> */}
         <Route path="/" render={props => (
-          <IndexPage>
+          <IndexPage history={props.history}>
             <Switch>
               <Route component={ListPage} path='sub/list' />
               <Route component={DetailPage} path='sub/detail' />

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import LoginService from '../services/Login.js';
+import Header from '../components/Index/Header/index.js';
+
+const loginService = new LoginService();
 
 export default class IndexPage extends Component {
   constructor(props) {
@@ -9,22 +13,27 @@ export default class IndexPage extends Component {
     }
   }
 
+  async loginCheck() {
+    const result = await loginService.loginCheck();
+
+    const errorCode = result.error_code;
+    // 没有登录，则跳转到登录页面
+    if (errorCode === 10006) {
+      const { history } = this.props;
+      history.push('/login')
+    }
+  }
+
+  componentDidMount() {
+    this.loginCheck();
+  }
+
   render() {
-    const { children } = this.props;
+    const { children, history } = this.props;
 
     return (
-      <div>
-        {/* <h1>Index Page</h1> */}
-        <ul>
-          <li>
-            <Link to='/sub/list'>列表页</Link>
-          </li>
-          <li>
-            <Link to='/sub/detail'>详情页</Link>
-          </li>
-        </ul>
-        <div>{children}</div>
-
+      <div className='container'>
+        <Header history={history} />
       </div>
 
     )

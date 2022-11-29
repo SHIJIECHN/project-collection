@@ -7,7 +7,6 @@ const { getCourseFieldData } = require('../services/CourseTab.js');
 class Index {
   async index(ctx, next) {
     const sess = ctx.session;
-    console.log(sess)
 
     if (!sess.uid) {
       sess.uid = 1;
