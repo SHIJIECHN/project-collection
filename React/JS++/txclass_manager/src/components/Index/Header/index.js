@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HeaderLogo from '../Logo/index.js';
-import HeaderTitle from '../Title/index.js';
+import HeaderTitle from './Title/index.js';
 import Logout from '../Logout/index.js';
 
 import './index.scss';

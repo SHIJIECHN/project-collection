@@ -1,0 +1,12 @@
+.side-bar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 200px;
+  height: 100%;
+  padding-top: 80px;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  box-sizing: border-box;
+}
