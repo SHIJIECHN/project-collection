@@ -28,7 +28,7 @@ class Admin {
     ctx.body = returnInfo(LOGIN.NOT_LOGIN_STATUS);
   }
 
-  // 登录
+  // 登录接口
   async loginAction(ctx, next) {
     // 解构传过来的数据
     const { username, password } = ctx.request.body;

@@ -9,9 +9,13 @@ import { NAV } from '../config/config.js';
 
 const loginService = new LoginService();
 
+// 创建组件
+// 1. constructor
+// 2. super(props)
 export default class IndexPage extends Component {
   constructor(props) {
     super(props);
+    // 数据
     this.state = {
       curIdx: 0,
       field: NAV[0].field,
@@ -47,6 +51,7 @@ export default class IndexPage extends Component {
     this.loginCheck();
   }
 
+  // render函数
   render() {
     const { children, history } = this.props,
       { curIdx } = this.state;

@@ -40,5 +40,5 @@ module.exports = {
     password: 'admin'
   },
   cryptoSecret: 'sSDKFJsinhfj%^^&&S^S&S&*(*SD*SDUJFJJD(SIKSOOS)dsss^*^',
-  corsOrigin: isPrd ? 'http://admin' : 'http://localhost:3001'
+  corsOrigin: isPrd ? 'http://admin.jsplusplus.com' : 'http://localhost:3001'
 }

@@ -11,7 +11,9 @@ export default class Login extends Component {
 
     return (
       <div className='login-container'>
+        {/* 图标 */}
         <Logo />
+        {/* 表单 */}
         <Form history={history} />
       </div>
     )
