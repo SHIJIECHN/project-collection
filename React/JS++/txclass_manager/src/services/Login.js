@@ -19,6 +19,7 @@ export default class LoginService extends HTTP {
     })
   }
 
+  /** 登录验证 */
   loginCheck() {
     return new Promise((resolve, reject) => {
       this.axiosGet({
@@ -34,6 +35,7 @@ export default class LoginService extends HTTP {
     })
   }
 
+  /** 退出登录 */
   logoutAction() {
     return new Promise((resolve, reject) => {
       this.axiosGet({

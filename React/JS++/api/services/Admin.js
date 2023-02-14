@@ -21,7 +21,7 @@ class AdminService {
   async login(userInfo) {
     const { username, password } = userInfo;
 
-    // 获取数据库中的数据
+    // 获取数据库中的数据, 是一个集合
     const usernameExist = await AdminModel.findOne({
       where: { username }
     })

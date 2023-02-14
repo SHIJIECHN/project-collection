@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { loginAction } from 'services/Login.js'
 import { trimSpace } from 'utils/tools.js'
 import LoginService from "services/Login.js";
 
 import './index.scss'
 
 const loginService = new LoginService();
+
+/**
+ * username: admin
+ * password: admin
+ */
 
 export default class LoginForm extends Component {
   constructor(props) {
@@ -20,12 +24,14 @@ export default class LoginForm extends Component {
     const result = await loginService.loginCheck();
 
     const errorCode = result.error_code;
+    // 10007 说明已经错在Cookies
     if (errorCode === 10007) {
       const { history } = this.props;
       history.push('/');
     }
   }
 
+  /** 同一事件名管理 */
   onInputTyping(e) {
     const id = e.target.id,
       val = e.target.value;

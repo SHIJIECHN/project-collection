@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import LoginService from '../services/Login.js';
 import Header from '../components/Index/Header/index.js';
 import SideBar from '../components/Index/SideBar/index.js';
@@ -7,7 +6,7 @@ import Container from '../components/Index/Container/index.js';
 
 import { NAV } from '../config/config.js';
 
-const loginService = new LoginService();
+const loginService = new LoginService(); // 实例化
 
 // 创建组件
 // 1. constructor
@@ -23,6 +22,7 @@ export default class IndexPage extends Component {
     }
   }
 
+  /** 登录验证 */
   async loginCheck() {
     const result = await loginService.loginCheck(),
       { history } = this.props;
@@ -30,7 +30,7 @@ export default class IndexPage extends Component {
     const errorCode = result.error_code;
     // 没有登录，则跳转到登录页面
     if (errorCode === 10006) {
-
+      // 跳转到login页面
       history.push('/login');
       return;
     }
@@ -48,12 +48,12 @@ export default class IndexPage extends Component {
   }
 
   componentDidMount() {
-    this.loginCheck();
+    this.loginCheck(); // 登录验证
   }
 
   // render函数
   render() {
-    const { children, history } = this.props,
+    const { children, history } = this.props, // 解构出history
       { curIdx } = this.state;
 
     return (

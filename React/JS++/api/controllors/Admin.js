@@ -17,8 +17,11 @@ class Admin {
     }
   }
 
-  // 验证是否已经登录中间件
+  // 验证是否已经登录。中间件
   async loginCheck(ctx, next) {
+    // 不会去比对session是否正确，因为携带了Cookie（ctx.session），
+    // 访问ctx.session.userInfo的时候才能获取到值，不存在就无法获取到
+    // 只要能访问到说明传进来的都是有效的
     if (ctx.session && ctx.session.userInfo) {
       // 登录状态
       ctx.body = returnInfo(LOGIN.LOGIN_STATUS);
