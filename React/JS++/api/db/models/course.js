@@ -41,7 +41,7 @@ const Course = seq.define('course', {
   field: {
     comment: 'the course concerned the tab',
     type: INT,
-    allowNull: false
+    deefaultValue: 0
   },
   posterKey: {
     comment: 'qiniu course image name',

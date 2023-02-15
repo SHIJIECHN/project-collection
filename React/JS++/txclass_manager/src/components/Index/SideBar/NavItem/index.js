@@ -5,9 +5,10 @@ import './index.scss';
 export default class NavItem extends Component {
   render() {
     const { curIdx, index, dataItem, onNavItemClick } = this.props;
-    console.log(dataItem.field)
+
     return (
       <div className={['nav-item', index === curIdx ? 'nav-current' : ''].join(' ')}>
+        {/* 使用 Link 路由跳转*/}
         <Link
           to={`/${dataItem.field}`}
           onClick={() => onNavItemClick(dataItem, index)}

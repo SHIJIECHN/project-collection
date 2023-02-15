@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import './assets/scss/common.css'
+import './assets/scss/common.scss'
 import './assets/scss/button.scss'
 import './assets/scss/iconfont.css'
 

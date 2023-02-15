@@ -19,6 +19,7 @@ class CourseTabService {
 
   async getCourseFieldData() {
     return await CourseTabModel.findAll({
+      // 排除数据项中的 cid
       attributes: {
         exclude: ['cid']
       }

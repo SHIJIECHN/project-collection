@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavItem from './NavItem/index.js';
+import NavItem from './NavItem/index.js'; // 侧边栏每一项组件
 
 import { NAV } from '../../../config/config.js';
 
@@ -11,6 +11,7 @@ export default class SideBar extends Component {
     return (
       <aside className='side-bar'>
         {
+          // 遍历NAV，将每一项都渲染出来
           NAV.map((item, index) => {
             return (
               <NavItem

@@ -29,18 +29,16 @@ class Index {
     // await ctx.render('index');
   }
   async getCourseData(ctx, next) {
-    const courseData = await getCourseData();
-    ctx.body = courseData;
-    // fieldData = await getCourseFieldData();
+    const courseData = await getCourseData(),
+      fieldData = await getCourseFieldData();
 
-    // ctx.body = courseData && fieldData
-    //   ? returnInfo(API.RETURN_SUCCESS, {
-    //     courseData,
-    //     fieldData
-    //   })
-    //   : returnInfo(API.RETURN_FAILED)
+    ctx.body = courseData && fieldData
+      ? returnInfo(API.RETURN_SUCCESS, {
+        courseData,
+        fieldData
+      })
+      : returnInfo(API.RETURN_FAILED)
   }
-
 }
 
 module.exports = new Index();

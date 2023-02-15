@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import LoginService from '../services/Login.js';
+
 import Header from '../components/Index/Header/index.js';
 import SideBar from '../components/Index/SideBar/index.js';
 import Container from '../components/Index/Container/index.js';
@@ -16,7 +18,7 @@ export default class IndexPage extends Component {
     super(props);
     // 数据
     this.state = {
-      curIdx: 0,
+      curIdx: 0, // 侧边栏默认显示弟0项
       field: NAV[0].field,
       title: NAV[0].title
     }
@@ -35,11 +37,13 @@ export default class IndexPage extends Component {
       return;
     }
 
-    history.push('./course');
+    // 如果登录，直接跳转到course页面
+    history.push('/course');
   }
 
   onNavItemClick(dataItem, index) {
     const { field, title } = dataItem;
+    // 点击侧边栏修改
     this.setState({
       field: field,
       title: title,
@@ -49,20 +53,41 @@ export default class IndexPage extends Component {
 
   componentDidMount() {
     this.loginCheck(); // 登录验证
+    // courseService.getCourseData().then(res => {
+    //   const errorCode = res.errorCode;
+
+    //   // 没有登录
+    //   if (errorCode === 10006) {
+    //     const { history } = this.props;
+    //     history.push('/login');
+    //     return;
+    //   }
+
+    //   // 数据请求失败
+    //   if (errorCode === 20001) {
+    //     alert('获取数据失败，请检查网络状况');
+    //     return;
+    //   }
+    //   const data = res.data;
+    //   console.log(data)
+    // })
   }
 
   // render函数
   render() {
+    // children获取子页面的内容
     const { children, history } = this.props, // 解构出history
       { curIdx } = this.state;
 
     return (
       <div className='container'>
         <Header history={history} />
+        {/* 侧边栏 */}
         <SideBar
           curIdx={curIdx}
           onNavItemClick={this.onNavItemClick.bind(this)}
         />
+        {/* 右侧内容 */}
         <Container
           children={children}
         />

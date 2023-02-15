@@ -12,14 +12,17 @@ Crawler({
 
     $item.each((index, item) => {
       const $el = $(item),
-        $itemLink = $el.find('.course-tab-filter-item')
+        $itemLink = $el.find('.course-tab-filter-item'),
+        title = $itemLink.text().replace('促', '');
 
-      const dataItem = {
-        cid: index + 1,
-        title: $itemLink.text().replace('促', '')
+      if (title !== '全部') {
+        const dataItem = {
+          cid: index + 1,
+          title: $itemLink.text().replace('促', '')
+        }
+
+        data.push(dataItem)
       }
-
-      data.push(dataItem)
     })
     return data;
   }

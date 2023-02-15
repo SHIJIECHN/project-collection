@@ -20,9 +20,9 @@ class CourseService {
   async getCourseData() {
     // 把数据取出来
     return await CourseModel.findAll({
-      // attributes: {
-      //   exclude: ['posterUrl', 'description']
-      // }
+      attributes: {
+        exclude: ['posterUrl', 'description', 'createdAt', 'updatedAt']
+      }
     })
   }
 }

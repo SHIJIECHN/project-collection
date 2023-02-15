@@ -11,6 +11,7 @@ import SliderPage from './pages/sub/Slider';
 import StudentPage from './pages/sub/Student';
 import TeacherPage from './pages/sub/Teacher';
 import CrawlerPage from './pages/sub/Crawler';
+import ErrorPage from './pages/sub/Error';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
               <Route component={StudentPage} path='/student' />
               <Route component={TeacherPage} path='/teacher' />
               <Route component={CrawlerPage} path='/crawler' />
+              <Route component={ErrorPage} />
+              {/* 路由匹配是从上到下的，如果没有匹配到才会匹配最后一个，path不写 */}
             </Switch>
           </IndexPage>
         )} />
