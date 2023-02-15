@@ -19,4 +19,20 @@ export default class CourseService extends HTTP {
       })
     })
   }
+
+  // 修改课程列表分类
+  changeCourseField(data) {
+    return new Promise((resolve, reject) => {
+      this.axiosPost({
+        url: COURSE.CHANGE_COURSE_FIELD,
+        data,
+        success(data) {
+          resolve(data);
+        },
+        error(err) {
+          alert('网络请求失败');
+        }
+      })
+    })
+  }
 }

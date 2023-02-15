@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import TableSelect from "components/common/TableSelect/index.js";
 
 import './index.scss'
 
 export default class TableBody extends Component {
   render() {
-    const { courseData } = this.props;
+    const { courseData, fieldData, onSelectChange } = this.props;
 
     return (
       <tbody>
@@ -38,7 +39,15 @@ export default class TableBody extends Component {
                   </span>
                 </td>
                 <td>{item.studentCount}</td>
-                <td></td>
+                <td>
+                  <TableSelect
+                    fieldData={fieldData}
+                    selectIdx={index}
+                    cid={item.cid}
+                    defaultValue={item.fieldTitle}
+                    onSelectChange={onSelectChange}
+                  ></TableSelect>
+                </td>
                 <td>
                   <button className={['btn', item.status ? 'btn-danger' : 'btn-success'].join(' ')}>
                     {item.status ? '下架' : '上架'}

@@ -8,6 +8,7 @@ const API = {
   },
   COURSE: {
     GET_COURSE_DATA: BASE_URL + 'get_courses',
+    CHANGE_COURSE_FIELD: BASE_URL + 'change_course_field'
   }
 
 }

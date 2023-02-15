@@ -16,7 +16,8 @@ export default class Course extends Component {
 
     this.state = {
       title: '课程管理',
-      courseData: []
+      courseData: [],
+      fieldData: []
     }
   }
 
@@ -32,7 +33,7 @@ export default class Course extends Component {
       // 数据格式化
       courseData.forEach((cItem, cIndex) => {
         if (cItem.field === 0) {
-          cItem.fieldItem = '无分类';
+          cItem.fieldTitle = '无分类';
         }
 
         fieldData.forEach((fItem, fIndex) => {
@@ -43,9 +44,32 @@ export default class Course extends Component {
       })
 
       this.setState({
-        courseData
+        courseData,
+        fieldData
       })
     })
+  }
+
+  async onSelectChange(data, cid, index) {
+    const { courseData } = this.state;
+    courseData[index].field = data.id;
+    courseData[index].fieldTitle = data.title;
+
+    this.setState({
+      courseData: this.state.courseData
+    })
+
+    const result = await courseService.changeCourseField({
+      cid,
+      field: data.id
+    })
+
+    const errorCode = result.error_code;
+
+    if (errorCode !== 0) {
+      alert('修改课程分类失败');
+      return;
+    }
   }
 
   componentDidMount() {
@@ -57,7 +81,7 @@ export default class Course extends Component {
   }
 
   render() {
-    const { title, courseData } = this.state;
+    const { title, courseData, fieldData } = this.state;
 
     return (
       <div className='list-container'>
@@ -65,7 +89,11 @@ export default class Course extends Component {
 
         <table className='list-table'>
           <TableHead thData={COURSE_TH}></TableHead>
-          <TableBody courseData={courseData}></TableBody>
+          <TableBody
+            courseData={courseData}
+            fieldData={fieldData}
+            onSelectChange={this.onSelectChange.bind(this)}
+          ></TableBody>
 
         </table>
       </div>

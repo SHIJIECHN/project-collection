@@ -59,41 +59,41 @@ i {
   clear: both;
 }
 
-.list-container{
+.list-container {
   min-width: 980px;
   height: 100%;
   padding: 20px;
   overflow: auto;
 
-  .list-table{
+  .list-table {
     width: 100%;
     margin-top: 10px;
     text-align: center;
-    
-    tr{
+
+    tr {
       height: 60px;
 
-      &:nth-child(odd){
+      &:nth-child(odd) {
         background-color: #efefef;
       }
 
-      th{
+      th {
         font-size: 16px;
       }
 
-      td{
-        img{
+      td {
+        img {
           width: 120px;
           vertical-align: middle;
           margin: 10px 0;
         }
 
-        &.course-name{
-          width: 300px;
+        &.course-name {
+          width: 250px;
           padding: 0 15px;
         }
 
-        .btn{
+        .btn {
           width: 80px;
           height: 33px;
         }

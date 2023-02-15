@@ -53,24 +53,6 @@ export default class IndexPage extends Component {
 
   componentDidMount() {
     this.loginCheck(); // 登录验证
-    // courseService.getCourseData().then(res => {
-    //   const errorCode = res.errorCode;
-
-    //   // 没有登录
-    //   if (errorCode === 10006) {
-    //     const { history } = this.props;
-    //     history.push('/login');
-    //     return;
-    //   }
-
-    //   // 数据请求失败
-    //   if (errorCode === 20001) {
-    //     alert('获取数据失败，请检查网络状况');
-    //     return;
-    //   }
-    //   const data = res.data;
-    //   console.log(data)
-    // })
   }
 
   // render函数

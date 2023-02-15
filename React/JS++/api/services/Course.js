@@ -25,6 +25,16 @@ class CourseService {
       }
     })
   }
+
+  // 修改课程管理分类
+  async changeField(cid, field) {
+    // 数据库更新
+    const ret = await CourseModel.update({ field }, {
+      where: { cid: cid }
+    });
+
+    return ret[0]
+  }
 }
 
 module.exports = new CourseService();
