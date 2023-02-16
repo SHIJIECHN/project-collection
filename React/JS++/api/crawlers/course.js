@@ -4,6 +4,7 @@ const Crawler = require('../libs/crawler.js'),
 
 Crawler({
   url: crawler.url.course,
+  field: 'course',
   callback() {
     const $ = window.$,
       $item = $('.course-card-list-multi-wrap .course-card-item');

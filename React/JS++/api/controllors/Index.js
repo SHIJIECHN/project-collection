@@ -1,7 +1,7 @@
 const { redisGet, redisSet } = require('../libs/redisClient.js');
 const { returnInfo } = require('../libs/utils.js');
 const { API } = require('../config/error_config.js');
-const { getCourseData, changeField } = require('../services/Course.js');
+const { getCourseData, changeField, changeStatus } = require('../services/Course.js');
 const { getCourseFieldData } = require('../services/CourseTab.js');
 
 class Index {
@@ -51,6 +51,19 @@ class Index {
     }
 
     ctx.body = returnInfo(API.CHANGE_COURSE_FIELD_SUCCESS);
+  }
+
+  async changeCourseStatus(ctx, next) {
+    const { cid, status } = ctx.request.body;
+
+    const result = changeStatus(cid, status);
+
+    // result错误返回0，正确返回1
+    if (!result) {
+      ctx.body = returnInfo(API.CHANGE_STATUS_FAILED);
+    }
+
+    ctx.body = returnInfo(API.CHANGE_STATUS_SUCCESS);
   }
 
 }

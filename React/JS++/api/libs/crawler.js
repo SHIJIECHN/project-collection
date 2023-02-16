@@ -15,6 +15,17 @@ module.exports = async function (options) {
 
   const result = await pg.evaluate(options.callback);
 
+  if (result && options.field === 'course') {
+    await pg.waitForSelector('.page-btn.page-last'); // 等待出现再页面
+    await pg.click('.page-btn.page-last');
+    await pg.waitFor(2000);
+    const res = await pg.evaluate(options.callback);
+    await pg.waitFor(2000);
+    for (var i = 0; i < res.length; i++) {
+      await result.push(res[i]);
+    }
+  }
+
   await bs.close();
 
   process.send(result);

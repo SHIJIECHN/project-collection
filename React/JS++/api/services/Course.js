@@ -33,7 +33,16 @@ class CourseService {
       where: { cid: cid }
     });
 
-    return ret[0]
+    return ret[0];
+  }
+
+  // 课程上下架
+  async changeStatus(cid, status) {
+    const ret = await CourseModel.update({ status }, {
+      where: { cid }
+    })
+
+    return ret[0];
   }
 }
 

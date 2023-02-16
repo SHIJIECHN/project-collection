@@ -72,6 +72,51 @@ export default class Course extends Component {
     }
   }
 
+  // 课程上下架
+  async onStatusClick(cid, index) {
+
+
+    const { courseData } = this.state,
+      st = courseData[index].status;
+
+    const cfm = window.confirm(`确定要${st ? '下架' : '上架'}该课程吗？`)
+
+    if (cfm) {
+      switch (st) {
+        case 1:
+          courseData[index].status = 0;
+          break;
+        case 0:
+          courseData[index].status = 1;
+          break;
+        default:
+          break;
+      }
+
+      // 需要采用回调函数的形式，因为要用到设置成功后的status，
+      this.setState({
+        courseData: this.state.courseData
+      }, async () => {
+        const result = await courseService.changeCourseStatus({
+          cid,
+          status: this.state.courseData[index].status
+        })
+        console.log(result)
+        const errorCode = result.error_code;
+
+        if (errorCode !== 0) {
+          const status = this.state.courseData[index].status
+          alert(
+            status ? '该课程上架失败' : '该课程下架失败'
+          );
+          return;
+        }
+      })
+    }
+  }
+
+
+
   componentDidMount() {
     this.getData();
   }
@@ -93,6 +138,7 @@ export default class Course extends Component {
             courseData={courseData}
             fieldData={fieldData}
             onSelectChange={this.onSelectChange.bind(this)}
+            onStatusClick={this.onStatusClick.bind(this)}
           ></TableBody>
 
         </table>
