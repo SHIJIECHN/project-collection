@@ -17,6 +17,22 @@ class CollectionService {
     }
   }
 
+  async getCollectionsData() {
+    return await CollectionModel.findAll({
+      attributes: {
+        exclude: ['posterUrl', 'corseIdList']
+      }
+    })
+  }
+
+  async changeCollectionsStatus(id, status) {
+    const ret = await CollectionModel.update({ status }, {
+      where: { id }
+    })
+
+    return ret[0];
+  }
+
 }
 
 module.exports = new CollectionService();

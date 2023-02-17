@@ -10,6 +10,29 @@ const API = {
     GET_COURSE_DATA: BASE_URL + 'get_courses',
     CHANGE_COURSE_FIELD: BASE_URL + 'change_course_field',
     CHANGE_COURSE_STATUS: BASE_URL + 'change_course_status'
+  },
+  RECOM_COURSE: {
+    GET_RECOM_COURSE_DATA: BASE_URL + 'get_recom_courses',
+    CHANGE_RECOM_COURSE_STATUS: BASE_URL + 'change_recom_course_status'
+  },
+  SLIDER: {
+    GET_SLIDER_DATA: BASE_URL + 'get_sliders'
+  },
+  COLLECTION: {
+    GET_COLLECTION: BASE_URL + 'get_collections'
+  },
+  TEACHER: {
+    GET_TEACHER: BASE_URL + 'get_teachers',
+    SELECT_STAR_TEACHER: BASE_URL + 'select_star_teacher'
+  },
+  STUDENT: {
+    GET_STUDENT: BASE_URL + 'get_students'
+  },
+  CRALWER: {
+    CRAWLER_ACTION: BASE_URL + 'crawler/crawler_action'
+  },
+  COMMON: {
+    CHANGE_STATUS: BASE_URL + 'change_status'
   }
 
 }

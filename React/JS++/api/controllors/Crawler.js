@@ -11,6 +11,17 @@ const { statProcess, startProcess, qiniuUpload } = require('../libs/utils.js'),
   { qiniu } = require('../config/config.js')
 
 class Crawler {
+
+  async crawlerAction(ctx, next) {
+    const { apiName } = ctx.request.body;
+
+    console.log(apiName);
+
+    await Crawler.prototype[apiName]();
+
+    ctx.body = 'finished'
+  }
+
   // 轮播图
   crawlSiderData() {
     startProcess({
@@ -358,6 +369,7 @@ class Crawler {
       }
     })
   }
+
 
 }
 

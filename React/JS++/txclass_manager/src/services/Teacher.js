@@ -1,15 +1,14 @@
 import HTTP from "utils/http.js";
 import { API } from "../config/config.js";
 
-const COURSE = API.COURSE,
-  COMMON = API.COMMON;
+const TEACHER = API.TEACHER;
 
-export default class CourseService extends HTTP {
-  // 获取课程列表信息
-  getCourseData() {
+export default class TeacherService extends HTTP {
+  // 获取列表信息
+  getTeacherData() {
     return new Promise((resolve, reject) => {
       this.axiosGet({
-        url: COURSE.GET_COURSE_DATA,
+        url: TEACHER.GET_TEACHER,
         success(data) {
           resolve(data);
         },
@@ -21,17 +20,18 @@ export default class CourseService extends HTTP {
     })
   }
 
-  // 修改课程列表分类
-  changeCourseField(data) {
+  // 明星老师
+  selectStarTeacher(data) {
     return new Promise((resolve, reject) => {
       this.axiosPost({
-        url: COURSE.CHANGE_COURSE_FIELD,
+        url: TEACHER.SELECT_STAR_TEACHER,
         data,
         success(data) {
           resolve(data);
         },
         error(err) {
           alert('网络请求失败');
+          // window.location.reload();
         }
       })
     })

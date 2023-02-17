@@ -16,6 +16,21 @@ class StudentService {
       return await StudentModel.create(data);
     }
   }
+
+  async getStudentData() {
+    return await StudentModel.findAll({
+      attributes: {
+        exclude: ['studentImg']
+      }
+    })
+  }
+
+  async changeStudentStatus(id, status) {
+    const ret = await StudentModel.update({ status }, {
+      where: { id }
+    });
+    return ret[0];
+  }
 }
 
 module.exports = new StudentService();

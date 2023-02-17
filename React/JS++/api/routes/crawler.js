@@ -18,6 +18,6 @@ router.get('/crawl_course_tab', loginCheck, crawlerController.crawlCourseTab);
 router.get('/crawl_course_data', loginCheck, crawlerController.crawlCourseData);
 router.get('/crawl_aboutus', loginCheck, crawlerController.crawlAboutus);
 
-
+router.post('/crawler_action', loginCheck, crawlerController.crawlerAction);
 
 module.exports = router;

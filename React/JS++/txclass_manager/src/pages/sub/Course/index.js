@@ -3,12 +3,14 @@ import ListTitle from 'components/common/ListTitle/index.js';
 import TableHead from 'components/common/TableHead/index.js';
 import TableBody from './TableBody/index.js';
 import CourseService from 'services/Course';
+import CommonService from 'services/Common.js';
 import { getDatas } from 'utils/tools.js'
 import { COURSE_TH } from "../../../config/table_config.js";
 
 import './index.scss';
 
-const courseService = new CourseService();
+const courseService = new CourseService(),
+  commonService = new CommonService();
 
 export default class Course extends Component {
   constructor(props) {
@@ -50,6 +52,7 @@ export default class Course extends Component {
     })
   }
 
+  // 课程分类
   async onSelectChange(data, cid, index) {
     const { courseData } = this.state;
     courseData[index].field = data.id;
@@ -74,8 +77,6 @@ export default class Course extends Component {
 
   // 课程上下架
   async onStatusClick(cid, index) {
-
-
     const { courseData } = this.state,
       st = courseData[index].status;
 
@@ -97,9 +98,10 @@ export default class Course extends Component {
       this.setState({
         courseData: this.state.courseData
       }, async () => {
-        const result = await courseService.changeCourseStatus({
-          cid,
-          status: this.state.courseData[index].status
+        const result = await commonService.changeStatus({
+          id: cid,
+          status: this.state.courseData[index].status,
+          field: 'COURSE'
         })
         console.log(result)
         const errorCode = result.error_code;

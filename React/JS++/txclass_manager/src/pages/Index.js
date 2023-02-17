@@ -38,7 +38,7 @@ export default class IndexPage extends Component {
     }
 
     // 如果登录，直接跳转到course页面
-    history.push('/course');
+    history.push('/crawler');
   }
 
   onNavItemClick(dataItem, index) {

@@ -21,6 +21,23 @@ class SliderService {
       return await SliderModel.create(data);
     }
   }
+
+  // 轮播图
+  async getSliderData() {
+    return await SliderModel.findAll({
+      attributes: {
+        exclude: ['imgUrl']
+      }
+    })
+  }
+
+  // 上下架
+  async changeSliderStatus(id, status) {
+    const ret = await SliderModel.update({ status }, {
+      where: { id }
+    });
+    return ret[0];
+  }
 }
 
 module.exports = new SliderService();
